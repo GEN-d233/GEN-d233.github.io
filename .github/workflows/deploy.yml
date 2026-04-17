@@ -1,0 +1,30 @@
+name: Hexo Deploy
+
+on:
+  push:
+    branches:
+      - main  # 监听 main 分支的变动
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # 使用 Node.js 20 版本
+
+      - name: Install Dependencies
+        run: npm install     # 自动安装 Hexo 和插件
+
+      - name: Build Site
+        run: npx hexo generate # 自动生成静态网页
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public # 部署 public 文件夹的内容
