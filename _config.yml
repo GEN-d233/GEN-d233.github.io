@@ -1,0 +1,18 @@
+# Hexo 基础配置
+title: 我的云端博客
+subtitle: ''
+description: '基于 GitHub Actions 搭建'
+author: 你的名字
+language: zh-CN
+timezone: ''
+
+# 这里的 url 必须改成你的域名
+url: https://你的用户名.github.io
+root: /
+
+# 默认文章目录
+source_dir: source
+public_dir: public
+
+# 默认主题 (先用最基础的 landscape)
+theme: landscape
